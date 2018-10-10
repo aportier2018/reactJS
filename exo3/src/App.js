@@ -12,7 +12,7 @@ class App extends Component {
       <Router>
             <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand">React Express App</a>
+                <a className="navbar-brand">Exo3 sur React </a>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav mr-auto">
                   <li className="nav-item">
@@ -24,7 +24,7 @@ class App extends Component {
                     <li className="nav-item">
                       <Link to={'/index'} className="nav-link">Index</Link>
                     </li>
-                    
+
                   </ul>
                 </div>
               </nav>

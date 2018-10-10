@@ -4,7 +4,7 @@ export default class CreateComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.onChangeHostName = this.onChangeHostName.bind(this);
+        this.onChangeNom = this.onChangeNom.bind(this);
         this.onChangeAge = this.onChangeAge.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -15,7 +15,7 @@ export default class CreateComponent extends Component {
             type:''
         }
     }
-    onChangeHostName(e) {
+    onChangeNom(e) {
         this.setState({
             nom: e.target.value
         });
@@ -42,7 +42,7 @@ export default class CreateComponent extends Component {
         axios.post('http://localhost:4200/serverport/add', serverport)
         .then(res => console.log(res.data));
         this.setState({
-            name: '',
+            nom: '',
             age: '',
             type: ''
         })
@@ -55,7 +55,7 @@ export default class CreateComponent extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Nom : </label>
-                        <input type="text" value={this.state.nom} className="form-control" onChange={this.onChangeHostName}/>
+                        <input type="text" value={this.state.nom} className="form-control" onChange={this.onChangeNom}/>
                     </div>
                     <div className="form-group">
                         <label>Age : </label>
@@ -66,7 +66,7 @@ export default class CreateComponent extends Component {
                         <input type="text" value={this.state.type} className="form-control" onChange={this.onChangeType}/>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Ajouter l'utilisateur" className="btn btn-primary"/>
+                        <input type="submit" value="Ajouter" className="btn btn-primary"/>
                     </div>
                 </form>
             </div>

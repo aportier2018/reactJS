@@ -5,25 +5,25 @@ export default class EditComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.onChangeHostName = this.onChangeHostName.bind(this);
+        this.onChangeNom = this.onChangeNom.bind(this);
         this.onChangeAge = this.onChangeAge.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
-        this.state = {name: '', age: '', type: ''};
+        this.state = {nom: '', age: '', type: ''};
     }
 
     componentDidMount() {
         axios.get('http://localhost:4200/serverport/edit/'+this.props.match.params.id)
             .then(response => {
-                this.setState({ name: response.data.name, age: response.data.age, type: response.data.type });
+                this.setState({ nom: response.data.nom, age: response.data.age, type: response.data.type });
             })
             .catch(function (error) {
                 console.log(error);
             })
         }
 
-        onChangeHostName(e) {
+        onChangeNom(e) {
             this.setState({
                 nom: e.target.value
             });
@@ -41,7 +41,7 @@ export default class EditComponent extends Component {
     onSubmit(e) {
         e.preventDefault();
         const serverport = {
-            name: this.state.name,
+            nom: this.state.nom,
             age: this.state.age,
             type: this.state.type
         }
@@ -49,7 +49,7 @@ export default class EditComponent extends Component {
         axios.post('http://localhost:4200/serverport/update/'+this.props.match.params.id, serverport)
         .then(res => console.log(res.data));
         this.setState({
-            name: '',
+            nom: '',
             age: '',
             type:''
         })
@@ -64,7 +64,7 @@ export default class EditComponent extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>renseigner le nom: </label>
-                        <input type="text" value={this.state.name} className="form-control" onChange={this.onChangeHostName}/>
+                        <input type="text" value={this.state.nom} className="form-control" onChange={this.onChangeNom}/>
                     </div>
                     <div className="form-group">
                         <label>Age: </label>
@@ -75,7 +75,7 @@ export default class EditComponent extends Component {
                         <input type="text" value={this.state.type} className="form-control" onChange={this.onChangeType}/>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Update server" className="btn btn-primary"/>
+                        <input type="submit" value="Valider" className="btn btn-primary"/>
                     </div>
                 </form>
             </div>

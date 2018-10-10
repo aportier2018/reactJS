@@ -1,22 +1,22 @@
 const express = require('express');
 const app = express();
-const ServerPortRouter = express.Router();
+const ProjetRouter = express.Router();
 
-const ServerPort = require('../models/ServerPort');
+const Projet = require('../models/Projet');
 
-ServerPortRouter.route('/add').post(function (req, res) {
-  const serverport = new ServerPort(req.body);
-  serverport.save()
-    .then(serverport => {
-        res.json('Utilisateur ajouté');
+ProjetRouter.route('/add').post(function (req, res) {
+  const projet = new Projet(req.body);
+  projet.save()
+    .then(projet => {
+        res.json('projet ajouté');
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
     });
 });
 
-ServerPortRouter.route('/').get(function (req, res) {
-    ServerPort.find(function (err, serverports){
+ProjetRouter.route('/').get(function (req, res) {
+    Projet.find(function (err, serverports){
     if(err){
       console.log(err);
     }
